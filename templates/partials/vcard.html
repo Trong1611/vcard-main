@@ -1,0 +1,79 @@
+{% load static %}
+<style>
+    .displayImage{
+        display: flex;
+        justify-content: center;
+    }
+     @media (max-width: 1050px) {
+         .displayImage{
+             display: flex;
+             justify-content: center;
+         }
+         .buttonStartNow{
+             margin-bottom: 20px !important;
+         }
+         .displayIphoneImage{
+             width: 90%;
+             height: 70%;
+         }
+     }
+     @media (max-width: 576px) {
+         .containerInfo{
+             padding-bottom: 250px;
+             padding-top: 0 !important;
+             margin-top: 0 !important;
+         }
+         .displayImage{
+             width: 100%;
+             img{
+                 width: 40%;
+                 padding-top: 20px;
+             }
+         }
+         .displayInfo{
+             padding-top: 0 !important;
+             height: fit-content !important;
+         }
+         .displayIphoneImage{
+             height: 90%;
+             width: 40%;
+         }
+         .displayOval{
+             margin: 0 10px;
+         }
+     }
+</style>
+{% block vcard %}
+    <div class="" id="vcard">
+        <div class="containerInfo row h-50 pt-5 mt-5">
+            <div class="pt-5 col-sm-2"></div>
+            <div class="pt-5 col-xs-8 col-md-8 col-md-offset-2">
+                <div class="displayOval oval">
+                    <div class="row h-100">
+                        <div class="displayImage col-md-3 col-sm-12">
+{#                            <img src="https://api.qrcode-monkey.com/tmp/e025529349c12792da03b4c431fcee87.svg?1700585071385"#}
+{#                                 width="80%">#}
+                        </div>
+                        <div class="displayInfo col-md-6  h-50 pt-5 mt-5 col-sm-8">
+                            <div class="col text-center">
+                                <h3><strong>QUÉT MÃ QR - RA NGAY DANH BẠ</strong></h3>
+                                <p><strong>Chỉ tốn 2 phút để tạo ngay danh bạ điện tử bằng QR Code</strong></p>
+                                <p><strong>Còn chờ gì nữa! Tạo liền tay, quẹt được ngay!!</strong></p>
+                                <div class="buttonStartNow pt-5">
+                                    <a class="btn btn-primary" href="/vcard/create">Bắt đầu ngay!!</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 d-flex align-items-center justify-content-center">
+                            <img
+                                    class="displayIphoneImage"
+                                    src="{% static 'images/iphone-screenshot.png' %}"
+                                    width="65%"
+                                    height="90%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock vcard %}

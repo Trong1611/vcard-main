@@ -1,0 +1,123 @@
+{% load widget_tweaks %}
+{% load static %}
+{% block header %}
+    <link rel="stylesheet" href="{% static 'vcard/iphone.scss' %}">
+{% endblock header %}
+<style>
+    .iphone-x {
+        position: relative;
+        margin: 40px auto;
+        width: 100%;
+        height: 100%;
+        background-color: #f0eff5;
+        border-radius: 40px;
+        box-shadow: 0 0 0 11px #1f1f1f, 0 0 0 13px #191919, 0 0 0 20px #111;
+
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        &:before {
+            top: 0;
+            width: 56%;
+            height: 30px;
+            background-color: #1f1f1f;
+            border-radius: 0 0 40px 40px;
+        }
+
+        .ip-screen {
+            color: #000000;
+            position: absolute;
+            display: block;
+        }
+
+        .speaker {
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, 6px);
+            height: 8px;
+            width: 15%;
+            background-color: #101010;
+            border-radius: 8px;
+            box-shadow: inset 0 -3px 3px 0 rgba(256, 256, 256, 0.2);
+        }
+
+        .screen {
+            top: 50px;
+            left: 0;
+            width: 100%;
+
+        }
+
+        .info-primary-text {
+            -webkit-user-select: none;
+            font-weight: 600;
+        }
+
+        .info-customer-footer {
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+        }
+
+        span {
+            -webkit-user-select: none;
+        }
+    }
+</style>
+{% block content %}
+    <div class="iphone-x">
+        <div class="speaker ip-screen"></div>
+        <div class="screen ip-screen">
+            <div class="iphone-top d-flex justify-content-center flex-column align-items-center">
+                <div class="border rounded-circle bg-secondary d-flex justify-content-center"
+                     style="width: 50px; height: 50px"></div>
+                <div id="DisplayNameIphone" class="customer-name d-flex justify-content-center fw-bold mt-2">
+                    {% if name %} {{ name }}{% else %}
+                        Nguyen Van A{% endif %}
+                </div>
+                <div id="DisplayPositionIphone"
+                     class="customer-service d-flex justify-content-center text-secondary mt-1">
+                    CEO
+                </div>
+                <div id="DisplayCompanyIphone"
+                     class="customer-company d-flex justify-content-center text-secondary mt-1">
+                    {% if company %}
+                        {{ company }}{% else %}Công ty{% endif %}
+                </div>
+            </div>
+            <div class="mt-2">
+                <img src="{% static 'images/iphone/iphone-service.png' %}" alt="" width="100%">
+            </div>
+            <div class="bg-white fs-13 mt-4 p-lg-1 p-lg-1">
+                <span class="fw-bold pl m-lg-2">Number</span><br>
+                <span id="DisplayPhoneNumberIphone" class="info-primary-text m-lg-2 text-primary">{% if phone %}
+                    {{ phone }}{% else %}
+                    0123141231{% endif %}</span>
+            </div>
+            <div class="bg-white fs-13 mt-4 p-lg-1">
+                <span class="fw-bold pl m-lg-2">Trang chủ</span><br>
+                <span id="DisplayWebsiteIphone" class="info-primary-text m-lg-2 text-primary">{% if website %}
+                    {{ website }}{% else %}
+                    https://www.google.com/{% endif %}</span>
+            </div>
+            <div class="bg-white fs-13 mt-4 p-lg-1">
+                <span class="fw-bold pl m-lg-2">Địa chỉ</span><br>
+                <span id="DisplayAddressIphone" class="info-primary-text m-lg-2">{% if address %}
+                    {{ address }}{% else %}
+                    An Khánh,Hoài Đức, Hà Nội{% endif %}</span>
+            </div>
+            <div class="info-customer-footer bg-white fs13 mt-4 p-lg-1">
+                <div class="info-primary-text border-bottom p-lg-1 text-primary" style="padding-left: 0.5rem">Tạo liên
+                    hệ mới
+                </div>
+                <div class="info-primary-text p-lg-1 text-primary" style="padding-left: 0.5rem"> Thêm vào liên hệ có
+                    sẵn
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

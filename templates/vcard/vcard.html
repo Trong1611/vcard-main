@@ -1,0 +1,219 @@
+{% extends "vcard/base.html" %}
+{% load widget_tweaks %}
+{% block vcard %}
+    <style>
+        .containerDisplayExamplePhone{
+            width: 20%;
+        }
+        .enable-item-mode {
+            display: flex !important;
+        }
+
+        .disable-item-mode {
+            display: none !important;
+        }
+        .containerCreatePhonebook{
+            padding-top: 120px;
+            padding-bottom: 3rem;
+        }
+        .fillInformationSpace{
+            margin-right: 170px
+        }
+     @media (max-width: 1050px) {
+         .containerCreatePhonebook{
+             padding-top: 150px;
+         }
+         .containerDisplayExamplePhone{
+             width: 30%;
+         }
+     }
+
+     @media (max-width: 576px) {
+         .containerCreatePhonebook{
+             padding-top: 120px;
+         }
+         .fillInformationSpace{
+             margin-right: 0;
+             width: 90%;
+         }
+         .containerDisplayExamplePhone{
+             display: flex;
+             justify-content: center;
+             width: 80%;
+             padding-bottom: 150px;
+             padding-top: 50px;
+         }
+         .iphone{
+             width: 85% !important;
+             height: 500px !important;
+         }
+     }
+    </style>
+    <div class="row justify-content-center containerCreatePhonebook">
+        <div class="pt-5 pt-lg-1 col-xs-8 col-md-4 col-md-offset-2 fillInformationSpace">
+            <form method="post">
+                <h2 class="pt-3">Bước 1: Tạo danh bạ</h2>
+                <h3>Thông tin của bạn</h3>
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="DisplayName">Họ và tên</label>
+                    <input
+                            type="text"
+                            class="form-control"
+                            id="DisplayName"
+                            name="DisplayName"
+                            aria-describedby="DisplayName"
+                            placeholder="Enter Full Name"
+                            value="{{ name }}">
+                </div>
+                <div class="form-group pt-2">
+                    <label for="Company">Công ty</label>
+                    <input
+                            type="text"
+                            class="form-control"
+                            name="Company"
+                            id="Company"
+                            aria-describedby="Company"
+                            placeholder="Enter Company"
+                            value="{{ company }}">
+                </div>
+                <div class="form-group pt-2">
+                    <label for="Position">Vị trí</label>
+                    <input
+                            type="text"
+                            class="form-control"
+                            name="Position"
+                            id="Position"
+                            aria-describedby="Position"
+                            placeholder="Enter Position"
+                            value="{{ position }}">
+                </div>
+                <div class="form-group pt-2">
+                    <label for="PhoneNumber">Số điện thoại</label>
+                    <input
+                            type="text"
+                            class="form-control"
+                            name="PhoneNumber"
+                            id="PhoneNumber"
+                            aria-describedby="PhoneNumber"
+                            placeholder="Enter Phone Number"
+                            value="{{ phone }}">
+                </div>
+                <div class="form-group pt-2">
+                    <label for="Address">Địa chỉ</label>
+                    <input
+                            type="text"
+                            class="form-control"
+                            name="Address"
+                            id="Address"
+                            aria-describedby="Address"
+                            placeholder="Enter Address"
+                            value="{{ address }}">
+                </div>
+                <div class="form-group pt-2">
+                    <label for="Email">Email</label>
+                    <input
+                            type="email"
+                            class="form-control"
+                            name="Email"
+                            id="Email"
+                            aria-describedby="Email"
+                            placeholder="Enter Email"
+                            value="{{ email }}">
+                </div>
+                <div class="form-group pt-2 pb-2">
+                    <label for="Website">Website</label>
+                    <input
+                            type="text"
+                            class="form-control"
+                            name="Website"
+                            id="Website"
+                            aria-describedby="Website"
+                            placeholder="Enter Website"
+                            value="{{ website }}">
+                </div>
+                <div class="form-group">
+                    <input type="hidden" name="step" value="1">
+                </div>
+                <div class="pt-2">
+                    <button type="submit" class="btn btn-primary" name="submit_type" value="view_qr">Xem QR</button>
+                    <button type="submit" class="btn btn-primary" name="submit_type" value="create_qr_style">
+                        Tiếp tục tạo mã QR
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="containerDisplayExamplePhone col-xs-8 col-md-2 col-lg-2 col-md-offset-2 ">
+            <div class="row iphone d-inline-flex justify-content-center" style="width: 100%; height: 85%">
+                <div class="border position-relative border-4 rounded-pill d-flex justify-content-center"
+                     style="width: 230px; height:50px; border-color: #5f81ca !important;">
+                    <span onclick="callTest('previewId','scanId','preview-mode','qr-mode')" id="previewId"
+                          class="iphone-option preview-option fw-bold position-absolute rounded-pill fs-6 d-flex align-items-center"
+                          style="background-color: #5f81ca; color: #ffffff">Preview</span>
+                    <span onclick="callTest('scanId','previewId','qr-mode','preview-mode')" id="scanId"
+                          class="iphone-option qr-option fw-bold position-absolute rounded-pill fs-6 d-flex align-items-center"
+                          style="color: #5f81ca">QR Code</span>
+                </div>
+                <div id="preview-mode" class="enable-item-mode" style="height: 100%">
+                    {% include 'vcard/component/iphone.html' %}
+                </div>
+                <div id="qr-mode"
+                     class="disable-item-mode iphone-shape d-inline-flex justify-content-center align-items-center mt-4">
+                    <img class="img-fluid"
+                         id="img_iphone"
+                         src="data:image/png;base64, {{ qrimg }}"
+                         alt="QRCode"
+                         onerror='this.style.display = "none"'>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+{% endblock vcard %}
+{% block extra_scripts %}
+    <script>
+        const arrayKeyValue = [
+            {key: 'DisplayName', phoneKey: 'DisplayNameIphone', defaultValue: 'Nguyen Van A'},
+            {key: 'Company', phoneKey: 'DisplayCompanyIphone', defaultValue: 'Công ty'},
+            {key: 'Position', phoneKey: 'DisplayPositionIphone', defaultValue: 'CEO'},
+            {key: 'PhoneNumber', phoneKey: 'DisplayPhoneNumberIphone', defaultValue: '0123141231'},
+            {key: 'Address', phoneKey: 'DisplayAddressIphone', defaultValue: 'An Khánh,Hoài Đức, Hà Nội'},
+            {key: 'Email', phoneKey: 'DisplayEmailIphone', defaultValue: 'Nguyen Van A'},
+            {key: 'Website', phoneKey: 'DisplayWebsiteIphone', defaultValue: 'https://www.google.com/'}
+        ]
+        arrayKeyValue.forEach(function (item) {
+            let inputElement = document.getElementById(item.key);
+            inputElement.addEventListener('input', function (event) {
+                if (inputElement.value === '') {
+                    document.getElementById(item.phoneKey).innerHTML = item.defaultValue;
+                } else {
+                    document.getElementById(item.phoneKey).innerHTML = event.target.value;
+                }
+            });
+        })
+
+            function callTest(idActive, idDisable, idModeEnable, idModeDisable) {
+                const optionActive = document.getElementById(idActive);
+                optionActive.style.backgroundColor = '#5f81ca'
+                optionActive.style.color = '#ffffff'
+                const optionDisable = document.getElementById(idDisable);
+                optionDisable.style.backgroundColor = 'transparent'
+                optionDisable.style.color = '#5f81ca'
+
+                const modeEnable = document.getElementById(idModeEnable);
+                modeEnable.classList.add('enable-item-mode');
+                modeEnable.classList.remove('disable-item-mode');
+                const modeDisable = document.getElementById(idModeDisable);
+                modeDisable.classList.remove('enable-item-mode')
+                modeDisable.classList.add('disable-item-mode')
+            }
+
+            function handleOnChangeText(event, key, defaultValue) {
+                document.getElementById(key).innerHTML = event.target.value;
+            }
+    </script>
+{% endblock extra_scripts %}

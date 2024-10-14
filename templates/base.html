@@ -1,0 +1,25 @@
+{% load static %}
+{% load widget_tweaks %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% block header %}
+    {% endblock header %}
+
+</head>
+<body>
+{% include 'nav.html' %}
+{% block content %}
+{% endblock %}
+{% block extra_scripts %}
+{% endblock extra_scripts %}
+</body>
+</html>

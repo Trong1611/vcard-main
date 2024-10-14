@@ -1,0 +1,105 @@
+{% load static %}
+<style>
+    .nav-link{
+        &:hover{
+            color: #0dcaf0;
+        }
+    }
+    .container{
+        max-width: 90% !important;
+    }
+     @media (max-width: 400px) {
+         .container {
+            max-width: 95% !important;
+         }
+     }
+</style>
+{% block navbar %}
+    <!-- START NAVBAR -->
+    <nav id="navbar" style="padding-bottom: 0; padding-top: 0" class="navbar bg-light navbar-expand-lg fixed-top sticky">
+        <div class="container" style="">
+            <a class="navbar-brand d-flex align-items-center" style="line-height: 0" href="/">
+                <img style="margin-right: 10px" src="{% static 'images/logo_conecta.svg' %}" alt="" height="40">
+{#                <span style="color: #0dcaf0">Conecta</span>#}
+            </a>
+{#            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"#}
+{#                    data-bs-target="#navbarSupportedContent"#}
+{#                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">#}
+{#                <i class="mdi mdi-menu text-muted"></i>#}
+{#            </button>#}
+{#            <div class="collapse navbar-collapse" id="navbarSupportedContent">#}
+{#                <ul class="navbar-nav mx-auto mb-2 mb-lg-0" id="navbar-navList">#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link active" href="/#home">Home</a>#}
+{#                    </li>#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="/#vcard">VCard</a>#}
+{#                    </li>#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="/#features">Features</a>#}
+{#                    </li>#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="/#client">Client</a>#}
+{#                    </li>#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="/#price">Pricing</a>#}
+{#                    </li>#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="/#faq">Faq</a>#}
+{#                    </li>#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="/#about">About</a>#}
+{#                    </li>#}
+{#                    <li class="nav-item dropdown">#}
+{#                        <a class="nav-link" href="/#blog">Blog</a>#}
+{#                        <a class="nav-link" href="#blog" id="navbarDropdown" role="button" data-bs-toggle="dropdown"#}
+{#                           aria-expanded="false">#}
+{#                            Blog#}
+{#                            <i class="mdi mdi-chevron-down"></i>#}
+{#                        </a>#}
+{#                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">#}
+{#                            <li><a class="nav-link" href="#blog">Blog</a></li>#}
+{#                            <li><a class="nav-link" href="blog-list.html">Blog List</a></li>#}
+{#                            <li><a class="nav-link" href="blog-details.html">Blog Details</a></li>#}
+{#                        </ul>#}
+{#                    </li>#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="/#contact">Contact</a>#}
+{#                    </li>#}
+{#                </ul>#}
+{#                <!--end navbar-nav-->#}
+                {#                <ul class="list-inline mb-0 ps-lg-4 ms-2">#}
+                {#                    <li class="list-inline-item">#}
+                {#                        <a href="#" class="primary-link"><i class="mdi mdi-facebook"></i></a>#}
+                {#                    </li>#}
+                {#                    <li class="list-inline-item">#}
+                {#                        <a href="#" class="primary-link"><i class="mdi mdi-twitter"></i></a>#}
+                {#                    </li>#}
+                {#                    <li class="list-inline-item">#}
+                {#                        <a href="#" class="primary-link"><i class="mdi mdi-instagram"></i></a>#}
+                {#                    </li>#}
+                {#                </ul>#}
+{##}
+{#            </div>#}
+            <div class="text-center d-flex justify-content-center align-items-center mt-3 mb-3">
+                {% if user.is_authenticated %}
+                    <div class="nav-item dropdown">
+                        <a class="nav-link"  style="padding: 0" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false"><b class="fs-5" style="color: #0dcaf0">{{ user.email }} </b><i
+                                class="mdi mdi-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu px-3" style="width: 190px" aria-labelledby="navbarDropdown">
+                            <li><a class="nav-link dropdown-item fw-bold p-1 border-bottom"  style="color: #000000" href="/vcard/list">Vcard Collection</a></li>
+                            <li><a class="nav-link dropdown-item fw-bold p-1"  style="color: #000000" href="/vcard/logout">Log out</a></li>
+                        </ul>
+                    </div>
+                {% else %}
+                    <a class="btn btn-primary ms-3 btn-sm" style="padding: 6px 8px; font-size: 14px" href="/vcard/login">Đăng nhập</a>
+                {% endif %}
+            </div>
+            <!--end collapse-->
+        </div>
+        <!--end container-->
+    </nav>
+    <!-- END NAVBAR -->
+{% endblock navbar %}

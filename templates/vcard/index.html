@@ -1,0 +1,40 @@
+{% extends "vcard/base.html" %}
+{% load static %}
+{% block header %}
+{% endblock header %}
+{% block vcard %}
+    <div class="row h-50 pt-5 mt-5">
+        <div class="pt-5 col-sm-2"></div>
+        <div class="pt-5 col-xs-8 col-md-8 col-md-offset-2">
+            <div class="oval">
+                <div class="row h-100">
+                    <div class="col-md-3">
+                        <img src="https://api.qrcode-monkey.com/tmp/e025529349c12792da03b4c431fcee87.svg?1700585071385"
+                             width="100%"
+                             height="100%"
+                             class="ps-5">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row h-50 pt-5">
+                            <div class="col">
+                                <h3><strong>QUÉT MÃ QR - RA NGAY DANH BẠ</strong></h3>
+                                <p><strong>Chỉ tốn 2 phút để tạo ngay danh bạ điện tử bằng QR Code</strong></p>
+                                <p><strong>Còn chờ gì nữa! Tạo liền tay, quẹt được ngay!!</strong></p>
+                            </div>
+                            <div class="pt-3">
+                                <a class="btn btn-primary" href="/vcard/create">Bắt đầu ngay!!</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="pt-4"></div>
+                        <img
+                                src="{% static 'images/iphone-screenshot.png' %}"
+                                width="65%"
+                                height="90%">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock vcard %}

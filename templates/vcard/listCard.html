@@ -1,0 +1,72 @@
+{% extends "vcard/base.html" %}
+{% load widget_tweaks %}
+{% block header %}
+{% endblock header %}
+
+{% block vcard %}
+    <style>
+        td {
+            font-size: large;
+        }
+
+        .actionDelete {
+            cursor: pointer;
+        }
+        .containerListCard{
+            padding-bottom: 690px;
+        }
+        @media (max-width: 1050px) {
+            .containerListCard {
+                padding-bottom: 1111px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .containerListCard {
+                padding-bottom: 660px;
+            }
+        }
+    </style>
+    <div class="containerListCard w-75 mb-0" style="margin: 0 auto; padding-top: 110px">
+        <h3 class="mt-5">Mã QR của bạn</h3>
+        <div style="width: 100%; overflow: scroll">
+            <table class="table table-responsive table-primary table-striped text-light">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Company</th>
+                    <th scope="col">Position</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Website</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for vcard in vcards %}
+                    <tr>
+                        <td>{{ vcard.DisplayName }}</td>
+                        <td>{{ vcard.Company }}</td>
+                        <td>{{ vcard.Position }}</td>
+                        <td>{{ vcard.PhoneNumber }}</td>
+                        <td>{{ vcard.Address }}</td>
+                        <td>{{ vcard.Email }}</td>
+                        <td>{{ vcard.Website }}</td>
+                        <td class="actionDelete" style="color: red">
+                            <form action="{% url 'vcard:delete' vcard_id=vcard.id %}">
+                                <button style="border-radius: 5px ;border: none;background-color: red; color: #ffffff"
+                                        type="submit">Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+
+    </script>
+{% endblock vcard %}

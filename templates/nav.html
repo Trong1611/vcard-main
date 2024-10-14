@@ -1,0 +1,54 @@
+{% block header %}
+    <title>Connecta VCard Generator</title>
+{% endblock header %}
+<style>
+    .nav-items {
+        cursor: pointer;
+        padding: 0.7rem 0;
+        width: 120px;
+        color: #ffffff;
+        text-align: center;
+        &:hover {
+            color: #ffffff;
+            opacity: 0.7;
+        }
+
+        &:active {
+            color: #ffffff;
+            opacity: 0.5;
+        }
+    }
+</style>
+{% block content %}
+    <nav class="navbar navbar-expand-lg text-white px-1" style="background-color: #003d4c; padding: 0">
+        <span class="nav-items nav-item navbar-brand mb-0 h1" id="/vcard">Trang chủ</span>
+        <span class="nav-items nav-item navbar-brand mb-0 h1" id="/vcard/create/">VCARD</span>
+        <span class="nav-items nav-item navbar-brand mb-0 h1" id="/vcard/create/format/">Về chúng tôi</span>
+    </nav>
+{% endblock content %}
+{% block extra_scripts %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the current URL path
+            const path = window.location.pathname;
+            console.log(path)
+
+            // Get all navigation links
+            const links = document.querySelectorAll(".navbar span");
+
+            // Loop through each link and check if its href matches the current path
+            links.forEach((link) => {
+                const linkPath = link.getAttribute("id");
+
+                console.log('link', linkPath);
+                if (path === linkPath) {
+                    // If there's a match, add a class to highlight the link
+                    console.log("match", path, linkPath)
+                    link.style.backgroundColor = 'black'
+                } else {
+                    link.style.backgroundColor = 'transparent'
+                }
+            });
+        });
+    </script>
+{% endblock extra_scripts %}

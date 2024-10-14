@@ -1,0 +1,137 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Connecta</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Networking chuyên nghiệp hơn vs QR code của QRConnecta" />
+    <meta name="keywords" content="bootstrap v5.3.0, premium, marketing, multipurpose" />
+    <meta content="Themesdesign" name="author" />
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{% static 'images/logo_conecta.svg' %}" />
+
+    <!-- Bootstrap css-->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+
+    <!-- Materialdesign icon-->
+    <link rel="stylesheet" href="{% static 'css/materialdesignicons.min.css' %}" type="text/css" />
+
+    <!-- Swiper Slider css -->
+{#    <link rel="stylesheet" href="{% static 'css/swiper-bundle.min.css' %}" type="text/css" />#}
+
+    <!-- Custom Css -->
+    <link href="{% static 'css/style.min.css' %}" rel="stylesheet" type="text/css" />
+
+    <!-- colors -->
+    <link href="{% static 'css/colors/default.css' %}" rel="stylesheet" type="text/css" id="color-opt" />
+    {% load bootstrap5 %}
+{#    {% bootstrap_css %}#}
+{#    {% bootstrap_javascript %}#}
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navbar-navList" data-bs-offset="60">
+
+    <!--start page Loader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="load">
+                <hr />
+                <hr />
+                <hr />
+                <hr />
+            </div>
+        </div>
+    </div>
+    <!--end page Loader -->
+<div style="min-height: 100vh;position: relative">
+    {% block navbar %}
+    {% include 'partials/navbar.html' %}
+    {% endblock navbar %}
+
+
+{#    {% block home %}#}
+{#    {% endblock home %}#}
+
+    {% block vcard %}
+    {% include 'partials/vcard.html' %}
+    {% endblock vcard %}
+
+{#    {% block feature %}#}
+{#    {% include 'partials/feature.html' %}#}
+{#    {% endblock feature %}#}
+{##}
+{#    {% block process %}#}
+{#    {% include 'partials/process.html' %}#}
+{#    {% endblock process %}#}
+{##}
+{##}
+{#    {% block clients %}#}
+{#    {% include 'partials/clients.html' %}#}
+{#    {% endblock clients %}#}
+
+{#    {% block feature2 %}#}
+{#    {% include 'partials/feature2.html' %}#}
+{#    {% endblock feature2 %}#}
+
+{#    {% block pricing %}#}
+{#    {% include 'partials/pricing.html' %}#}
+{#    {% endblock pricing %}#}
+
+{#    {% block faq %}#}
+{#    {% include 'partials/faq.html' %}#}
+{#    {% endblock faq %}#}
+
+
+{#    {% block about %}#}
+{#    {% include 'partials/about.html' %}#}
+{#    {% endblock about %}#}
+{##}
+{##}
+{#    {% block blog %}#}
+{#    {% include 'partials/blog.html' %}#}
+{#    {% endblock blog %}#}
+{##}
+{#    {% block contact %}#}
+{#    {% include 'partials/contact.html' %}#}
+{#    {% endblock contact %}#}
+
+    {% block footer %}
+    {% include 'partials/footer.html' %}
+    {% endblock footer %}
+{##}
+{#    {% block modal %}#}
+{#    {% include 'partials/modal.html' %}#}
+{#    {% endblock modal %}#}
+{##}
+{#    {% block subscribeModal %}#}
+{#    {% include 'partials/subscribe-Modal.html' %}#}
+{#    {% endblock subscribeModal %}#}
+{##}
+{##}
+{#    {% block styleswitcher %}#}
+{#    {% include 'partials/style-switcher.html' %}#}
+{#    {% endblock styleswitcher %}#}
+</div>
+
+    <!-- Bootstrap Bundale js -->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Swiper Slider js -->
+    <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+
+    <!-- Contact Js -->
+    <script src="{% static 'js/contact.js' %}"></script>
+
+    <!-- Index-init Js -->
+    <script src="{% static 'js/index.init.js' %}"></script>
+
+    <!-- App js -->
+    <script src="{% static 'js/app.js' %}"></script>
+</body>
+
+</html>

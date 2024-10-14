@@ -1,0 +1,62 @@
+.iphone-x {
+    position: relative;
+    margin: 40px auto;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    border-radius: 40px;
+    box-shadow: 0 0 0 11px #1f1f1f, 0 0 0 13px #191919, 0 0 0 20px #111;
+
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    &:after {
+        bottom: 7px;
+        width: 140px;
+        height: 4px;
+        background-color: #f2f2f2;
+        border-radius: 10px;
+    }
+
+    &:before {
+        top: 0;
+        width: 56%;
+        height: 30px;
+        background-color: #1f1f1f;
+        border-radius: 0 0 40px 40px;
+    }
+
+    .ip-screen {
+        position: absolute;
+        display: block;
+        color: transparent;
+    }
+
+    .speaker {
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 6px);
+        height: 8px;
+        width: 15%;
+        background-color: #101010;
+        border-radius: 8px;
+        box-shadow: inset 0 -3px 3px 0 rgba(256, 256, 256, 0.2);
+    }
+
+
+    .screen {
+        top: 50px;
+        color: #fff;
+        text-align: center;
+        text-decoration: none;
+        width: 100%;
+        font-size: 70px;
+        font-weight: 100;
+        padding-top: 60px;
+    }
+}
