@@ -24,10 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-s$2xmcdb%k7od=xi5^znhbe(@^4m01v-_d+ny)wv+)i7ow@#(v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['18.140.92.37', 'https://qrconnecta.com']
-CSRF_TRUSTED_ORIGINS = ['https://qrconnecta.com']
+ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ['*']
 
 
 # Application definition
