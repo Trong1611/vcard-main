@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-s$2xmcdb%k7od=xi5^znhbe(@^4m01v-_d+ny)wv+)i7ow@#(v
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['*']
+CSRF_TRUSTED_ORIGINS = ['http://qrconnecta.com', 'http://qrconnecta.com']
 
 
 # Application definition
