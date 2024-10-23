@@ -39,9 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
     'bootstrap5',
-    'widget_tweaks'
+    'widget_tweaks',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -75,9 +77,22 @@ TEMPLATES = [
     },
 ]
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'connectaqr6@gmail.com'
+EMAIL_HOST_PASSWORD = 'kqdf klgb kwzs vwsn'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
 WSGI_APPLICATION = 'vcard_web.wsgi.application'
 
 
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+SESSION_COOKIE_AGE = 1209600
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+SESSION_COOKIE_SECURE = False
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
