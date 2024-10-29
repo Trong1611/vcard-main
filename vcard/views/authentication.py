@@ -47,7 +47,7 @@ def register_view(request):
         user = User(email=email, username=email, password=make_password(password))
         user.save()
         login(request, user)
-        return redirect('create/format')
+        return redirect('/vcard/create/')
     return render(request, "vcard/register.html")
     # if request.method == "POST":
     #     email = request.POST.get("email")
